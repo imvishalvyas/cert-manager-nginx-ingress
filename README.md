@@ -2,7 +2,7 @@
 
 We will use Helm to install Cert Manager to our Cluster. Cert-Manager is a Kubernetes native certificate manager. One of the most significant features that Cert-Manager provides is its ability to automatically provision TLS certificates. Based on the annotations in a Kubernetes ingress resource, the cert-manager will talk to Let’s Encrypt and acquire a certificate on your service’s behalf.
 
-`Note` : Ensure that you are using Helm v2.12.1 or later before installing cert-manager.
+`Note` : Ensure that you are using Helm v2.12.1 or later.
 
 `Prerequisites ` : 
 
@@ -67,7 +67,7 @@ spec:
     http01: {}
 ```
 
-`email` = you email id.
+`email` = your email id.
 
 We then specify an email address to register the certificate, and create a Kubernetes Secret called letsencrypt-staging to store the ACME account's private key. We also enable the HTTP-01 challenge mechanism.
 
@@ -87,8 +87,8 @@ kubectl apply -f prod_issuer.yaml
 spec:
   tls:
   - hosts:
-    - example.com
-    - xyz.com
+    - vishalvyas.com
+    - imvishalvyas.com
     secretName: letsencrypt-prod
 ```
 
@@ -98,4 +98,4 @@ We will now perform a test using curl to verify that HTTPS is working correctly.
 curl https://example.com
 ```
 
-At this point, We have successfully configured HTTPS using a Let's Encrypt certificate for our Nginx Ingress.
+We have successfully configured HTTPS using a Let's Encrypt certificate for our Nginx Ingress.

@@ -1,26 +1,26 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: certman 
+  name: my-ingress
   annotations:  
     kubernetes.io/ingress.class: nginx
     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
   - hosts:
-    - vishalrhce.ml
-    - imvishalvyas.ml
+    - vishalvyas.com
+    - imvishalvyas.com
     secretName: letsencrypt-prod
   rules:
-  - host: vishalrhce.ml
+  - host: vishalvyas.com
     http:
       paths:
       - backend:
-          serviceName: nginx
+          serviceName: service1
           servicePort: 80
-  - host: imvishalvyas.ml
+  - host: imvishalvyas.com
     http:
       paths:
       - backend:
-          serviceName: certman
+          serviceName: service2
           servicePort: 80
